@@ -1,0 +1,57 @@
+  
+  .brand-carousel {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px 0 rgba(35,97,255,0.08);
+    padding: 18px 0;
+  }
+  
+  .brand-track {
+    display: flex;
+    width: fit-content;
+    animation: scroll-x 18s linear infinite;
+    align-items: center;
+    gap: 28px;
+  }
+  
+  .brand-logo {
+    min-width: 120px;
+    max-width: 120px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    background: #f5f8fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px 0 rgba(35,97,255,0.07);
+  }
+  .brand-logo img {
+    max-width: 100%;
+    max-height: 36px;
+    object-fit: contain;
+    filter: grayscale(0.2) brightness(0.95);
+    transition: filter 0.3s;
+  }
+  .brand-logo:hover img {
+    filter: none;
+  }
+  
+  @keyframes scroll-x {
+    0% { transform: translateX(0);}
+    100% { transform: translateX(-50%);}
+  }
+  
+  /* Responsive */
+  @media (max-width: 640px) {
+    .brand-logo {
+      min-width: 80px;
+      max-width: 80px;
+      height: 38px;
+      padding: 7px 6px;
+    }
+  }
