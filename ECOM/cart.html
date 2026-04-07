@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <meta name="description" content="Review your shopping cart items, update quantities, and proceed to checkout for your e-commerce purchases.">
+    <link rel="stylesheet" href="./cart.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="cart-header">
+            <div class="header-content">
+                <button class="back-btn" onclick="goBack()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5m7-7l-7 7 7 7"/>
+                    </svg>
+                    Continue Shopping
+                </button>
+                <h1>Shopping Cart</h1>
+                <div class="cart-counter">
+                    <span id="cartItemCount">3</span> items
+                </div>
+            </div>
+        </header>
+
+        <div class="cart-content">
+            <!-- Cart Items Section -->
+            <div class="cart-main">
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart Item 1 -->
+                    <div class="cart-item" data-id="1">
+                        <div class="item-checkbox">
+                            <input type="checkbox" id="item1" checked>
+                            <label for="item1"></label>
+                        </div>
+                        <div class="item-image">
+                            <img src="https://via.placeholder.com/100x100/ff7675/ffffff?text=SHOE" alt="Running Shoes">
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">Premium Running Shoes</h3>
+                            <p class="item-description">Comfortable athletic shoes with advanced cushioning technology</p>
+                            <div class="item-attributes">
+                                <span class="attribute">Color: <strong>Black</strong></span>
+                                <span class="attribute">Size: <strong>US 9</strong></span>
+                            </div>
+                            <div class="item-actions">
+                                <button class="action-btn" onclick="saveForLater(1)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                    Save for Later
+                                </button>
+                                <button class="action-btn" onclick="removeItem(1)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="3,6 5,6 21,6"/>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                        <div class="item-price">
+                            <div class="price-section">
+                                <span class="original-price">$149.99</span>
+                                <span class="current-price">$119.99</span>
+                                <span class="discount-badge">20% OFF</span>
+                            </div>
+                            <div class="quantity-controls">
+                                <button class="qty-btn" onclick="updateQuantity(1, -1)">-</button>
+                                <input type="number" class="qty-input" value="1" min="1" max="10" onchange="updateQuantity(1, 0, this.value)">
+                                <button class="qty-btn" onclick="updateQuantity(1, 1)">+</button>
+                            </div>
+                            <div class="item-total">$119.99</div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Item 2 -->
+                    <div class="cart-item" data-id="2">
+                        <div class="item-checkbox">
+                            <input type="checkbox" id="item2" checked>
+                            <label for="item2"></label>
+                        </div>
+                        <div class="item-image">
+                            <img src="https://via.placeholder.com/100x100/74b9ff/ffffff?text=SHIRT" alt="Cotton T-Shirt">
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">Premium Cotton T-Shirt</h3>
+                            <p class="item-description">Soft, breathable cotton t-shirt perfect for everyday wear</p>
+                            <div class="item-attributes">
+                                <span class="attribute">Color: <strong>Navy Blue</strong></span>
+                                <span class="attribute">Size: <strong>Medium</strong></span>
+                            </div>
+                            <div class="item-actions">
+                                <button class="action-btn" onclick="saveForLater(2)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                    Save for Later
+                                </button>
+                                <button class="action-btn" onclick="removeItem(2)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="3,6 5,6 21,6"/>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                        <div class="item-price">
+                            <div class="price-section">
+                                <span class="current-price">$29.99</span>
+                            </div>
+                            <div class="quantity-controls">
+                                <button class="qty-btn" onclick="updateQuantity(2, -1)">-</button>
+                                <input type="number" class="qty-input" value="2" min="1" max="10" onchange="updateQuantity(2, 0, this.value)">
+                                <button class="qty-btn" onclick="updateQuantity(2, 1)">+</button>
+                            </div>
+                            <div class="item-total">$59.98</div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Item 3 -->
+                    <div class="cart-item" data-id="3">
+                        <div class="item-checkbox">
+                            <input type="checkbox" id="item3" checked>
+                            <label for="item3"></label>
+                        </div>
+                        <div class="item-image">
+                            <img src="https://via.placeholder.com/100x100/00b894/ffffff?text=WATCH" alt="Smart Watch">
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">Smart Fitness Watch</h3>
+                            <p class="item-description">Advanced fitness tracking with heart rate monitor and GPS</p>
+                            <div class="item-attributes">
+                                <span class="attribute">Color: <strong>Space Gray</strong></span>
+                                <span class="attribute">Band: <strong>Sport Band</strong></span>
+                            </div>
+                            <div class="item-actions">
+                                <button class="action-btn" onclick="saveForLater(3)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                    Save for Later
+                                </button>
+                                <button class="action-btn" onclick="removeItem(3)">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="3,6 5,6 21,6"/>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                    </svg>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                        <div class="item-price">
+                            <div class="price-section">
+                                <span class="original-price">$299.99</span>
+                                <span class="current-price">$249.99</span>
+                                <span class="discount-badge">17% OFF</span>
+                            </div>
+                            <div class="quantity-controls">
+                                <button class="qty-btn" onclick="updateQuantity(3, -1)">-</button>
+                                <input type="number" class="qty-input" value="1" min="1" max="10" onchange="updateQuantity(3, 0, this.value)">
+                                <button class="qty-btn" onclick="updateQuantity(3, 1)">+</button>
+                            </div>
+                            <div class="item-total">$249.99</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bulk Actions -->
+                <div class="bulk-actions">
+                    <div class="select-all">
+                        <input type="checkbox" id="selectAll" checked onchange="toggleSelectAll()">
+                        <label for="selectAll">Select All</label>
+                    </div>
+                    <div class="bulk-buttons">
+                        <button class="bulk-btn" onclick="removeSelected()">Remove Selected</button>
+                        <button class="bulk-btn" onclick="saveSelectedForLater()">Save Selected for Later</button>
+                    </div>
+                </div>
+
+                <!-- Saved for Later Section -->
+                <div class="saved-items" id="savedItems">
+                    <h3>Saved for Later</h3>
+                    <div class="saved-items-grid">
+                        <!-- Saved items will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Summary Section -->
+            <div class="cart-sidebar">
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Items (3)</span>
+                        <span id="subtotal">$429.96</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span class="free-shipping">FREE</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax</span>
+                        <span id="tax">$34.40</span>
+                    </div>
+                    <div class="summary-row discount">
+                        <span>Discount</span>
+                        <span id="discount">-$80.00</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="total">$384.36</span>
+                    </div>
+                    
+                    <!-- Promo Code Section -->
+                    <div class="promo-section">
+                        <div class="promo-input-group">
+                            <input type="text" placeholder="Enter promo code" id="promoCode" class="promo-input">
+                            <button class="promo-btn" onclick="applyPromoCode()">Apply</button>
+                        </div>
+                        <div class="promo-message" id="promoMessage"></div>
+                    </div>
+
+                    <!-- Checkout Button -->
+                    <button class="checkout-btn" onclick="proceedToCheckout()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+                        </svg>
+                        Proceed to Checkout
+                    </button>
+
+                    <!-- Payment Options -->
+                    <div class="payment-options">
+                        <p>We accept:</p>
+                        <div class="payment-icons">
+                            <div class="payment-icon visa">VISA</div>
+                            <div class="payment-icon mastercard">MC</div>
+                            <div class="payment-icon amex">AMEX</div>
+                            <div class="payment-icon paypal">PayPal</div>
+                        </div>
+                    </div>
+
+                    <!-- Security Badge -->
+                    <div class="security-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span>Secure Checkout</span>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="recommendations">
+                    <h3>You might also like</h3>
+                    <div class="recommendation-item">
+                        <img src="https://via.placeholder.com/60x60/fd79a8/ffffff?text=BAG" alt="Backpack">
+                        <div class="rec-details">
+                            <h4>Travel Backpack</h4>
+                            <p>$89.99</p>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addRecommendedItem(1)">Add</button>
+                    </div>
+                    <div class="recommendation-item">
+                        <img src="https://via.placeholder.com/60x60/a29bfe/ffffff?text=CASE" alt="Phone Case">
+                        <div class="rec-details">
+                            <h4>Phone Case</h4>
+                            <p>$24.99</p>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addRecommendedItem(2)">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty Cart State -->
+    <div class="empty-cart" id="emptyCart" style="display: none;">
+        <div class="empty-cart-content">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            <h2>Your cart is empty</h2>
+            <p>Add some items to your cart to get started</p>
+            <button class="continue-shopping-btn" onclick="continueShopping()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22,4 12,14.01 9,11.01"/>
+            </svg>
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="./cart.js"></script>
+</body>
+</html>

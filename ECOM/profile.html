@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - E-Commerce Store</title>
+    <meta name="description" content="Manage your user profile information, personal details, and account settings for your e-commerce account.">
+    <link rel="stylesheet" href="./profile.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container">
+
+
+        <div class="back-wrapper">
+            <h2>
+              <button class="back-btn" onclick="window.history.back()">
+                <i class="bi bi-chevron-left"></i> Back
+              </button>
+            </h2>
+          </div>
+          
+
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img src="https://via.placeholder.com/120x120/ff7675/ffffff?text=USER" alt="Profile Avatar" id="avatarImage">
+                <div class="avatar-overlay">
+                    <input type="file" id="avatarInput" accept="image/*" hidden>
+                    <button class="avatar-btn" onclick="document.getElementById('avatarInput').click()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-name">John Doe</h1>
+                <p class="profile-email">john.doe@example.com</p>
+                <span class="profile-badge">Premium Member</span>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-sidebar">
+                <nav class="profile-nav">
+                    <button class="nav-item active" data-section="personal">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Personal Info
+                    </button>
+                    <button class="nav-item" data-section="address">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Address Book
+                    </button>
+                    <button class="nav-item" data-section="security">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <circle cx="12" cy="16" r="1"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        Security
+                    </button>
+                    <button class="nav-item" data-section="preferences">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+                        </svg>
+                        Preferences
+                    </button>
+                </nav>
+            </div>
+
+            <div class="profile-main">
+                <!-- Personal Information Section -->
+                <div class="section active" id="personal">
+                    <div class="section-header">
+                        <h2>Personal Information</h2>
+                        <p>Update your personal details and contact information</p>
+                    </div>
+                    <form class="profile-form" id="personalForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" value="John" required>
+                                <span class="error-message" id="firstNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" value="Doe" required>
+                                <span class="error-message" id="lastNameError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" value="john.doe@example.com" required>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" value="+1 (555) 123-4567">
+                                <span class="error-message" id="phoneError"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="birthDate">Date of Birth</label>
+                                <input type="date" id="birthDate" name="birthDate" value="1990-01-15">
+                                <span class="error-message" id="birthDateError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button type="button" class="btn btn-secondary" onclick="resetForm('personalForm')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Address Book Section -->
+                <div class="section" id="address">
+                    <div class="section-header">
+                        <h2>Address Book</h2>
+                        <p>Manage your shipping and billing addresses</p>
+                    </div>
+                    <div class="address-grid">
+                        <div class="address-card">
+                            <div class="address-header">
+                                <h3>Default Shipping Address</h3>
+                                <div class="address-actions">
+                                    <button class="btn-icon" onclick="editAddress(1)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-icon" onclick="deleteAddress(1)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="3,6 5,6 21,6"/>
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="address-content">
+                                <p><strong>John Doe</strong></p>
+                                <p>123 Main Street, Apt 4B</p>
+                                <p>New York, NY 10001</p>
+                                <p>United States</p>
+                            </div>
+                        </div>
+                        <div class="address-card add-new">
+                            <button class="add-address-btn" onclick="showAddressForm()">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                <span>Add New Address</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Section -->
+                <div class="section" id="security">
+                    <div class="section-header">
+                        <h2>Security Settings</h2>
+                        <p>Manage your account security and password</p>
+                    </div>
+                    <form class="profile-form" id="securityForm">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password *</label>
+                            <input type="password" id="currentPassword" name="currentPassword" required>
+                            <span class="error-message" id="currentPasswordError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password *</label>
+                            <input type="password" id="newPassword" name="newPassword" required>
+                            <span class="error-message" id="newPasswordError"></span>
+                            <div class="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" id="strengthFill"></div>
+                                </div>
+                                <span class="strength-text" id="strengthText">Password strength</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password *</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <span class="error-message" id="confirmPasswordError"></span>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                            <button type="button" class="btn btn-secondary" onclick="resetForm('securityForm')">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Preferences Section -->
+                <div class="section" id="preferences">
+                    <div class="section-header">
+                        <h2>Account Preferences</h2>
+                        <p>Customize your account settings and notifications</p>
+                    </div>
+                    <form class="profile-form" id="preferencesForm">
+                        <div class="preference-group">
+                            <h3>Email Notifications</h3>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="emailNotifications" value="orders" checked>
+                                    <span class="checkmark"></span>
+                                    Order updates and shipping notifications
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="emailNotifications" value="promotions" checked>
+                                    <span class="checkmark"></span>
+                                    Promotions and special offers
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="emailNotifications" value="newsletter">
+                                    <span class="checkmark"></span>
+                                    Newsletter and product updates
+                                </label>
+                            </div>
+                        </div>
+                        <div class="preference-group">
+                            <h3>Privacy Settings</h3>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="privacy" value="profilePublic">
+                                    <span class="checkmark"></span>
+                                    Make profile publicly visible
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="privacy" value="showPurchases">
+                                    <span class="checkmark"></span>
+                                    Show purchase history to friends
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Preferences</button>
+                            <button type="button" class="btn btn-secondary" onclick="resetForm('preferencesForm')">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="toast" id="successToast">
+        <div class="toast-content">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22,4 12,14.01 9,11.01"/>
+            </svg>
+            <span id="toastMessage">Changes saved successfully!</span>
+        </div>
+    </div>
+
+    <!-- Address Form Modal -->
+    <div class="modal" id="addressModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Address</h3>
+                <button class="modal-close" onclick="closeAddressModal()">×</button>
+            </div>
+            <form class="profile-form" id="addressForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="addressName">Address Name *</label>
+                        <input type="text" id="addressName" name="addressName" placeholder="Home, Work, etc." required>
+                        <span class="error-message" id="addressNameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                        <span class="error-message" id="fullNameError"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="street">Street Address *</label>
+                    <input type="text" id="street" name="street" required>
+                    <span class="error-message" id="streetError"></span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" required>
+                        <span class="error-message" id="cityError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State *</label>
+                        <input type="text" id="state" name="state" required>
+                        <span class="error-message" id="stateError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">ZIP Code *</label>
+                        <input type="text" id="zipCode" name="zipCode" required>
+                        <span class="error-message" id="zipCodeError"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country *</label>
+                    <select id="country" name="country" required>
+                        <option value="">Select Country</option>
+                        <option value="us">United States</option>
+                        <option value="ca">Canada</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="au">Australia</option>
+                    </select>
+                    <span class="error-message" id="countryError"></span>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Address</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeAddressModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./profile.js"></script>
+</body>
+</html>
